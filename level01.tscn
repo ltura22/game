@@ -1,5 +1,60 @@
-[gd_scene format=3 uid="uid://dddjwee7elsr3"]
+[gd_scene load_steps=12 format=4 uid="uid://dddjwee7elsr3"]
+
+[ext_resource type="Script" path="res://level_01.gd" id="1_4my35"]
+[ext_resource type="Texture2D" uid="uid://dbvj7y4mk7lh6" path="res://assets/blueheartblock.png" id="2_82i7p"]
+[ext_resource type="Texture2D" uid="uid://pbmubalqmyqd" path="res://assets/ladybugblock.png" id="2_dod8c"]
+[ext_resource type="Texture2D" uid="uid://dl5i7dhih1pyk" path="res://assets/purpleblock.png" id="2_dvyf1"]
+[ext_resource type="PackedScene" uid="uid://c7bx77mkfcmen" path="res://player.tscn" id="2_fjnrr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agrmb"]
+texture = ExtResource("2_dod8c")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
+
+[sub_resource type="TileSet" id="TileSet_jauoq"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_agrmb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shpu8"]
+texture = ExtResource("2_82i7p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_uifix"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_shpu8")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4o4c"]
+texture = ExtResource("2_dvyf1")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_agv0y"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_e4o4c")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_4my35")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fjnrr")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(2, 2)
+
+[node name="RedTileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAD8/wIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jauoq")
+
+[node name="BlueTileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_uifix")
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_agv0y")
