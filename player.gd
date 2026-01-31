@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var jump_buffer_time := 0.12
 @export var wall_jump_lock_time := 0.15
 @export var jump_cut_multiplier := 0.4
+@export var dash_horizontal_disable_time = 0.15
 
 enum State { Idle, Walk, Jump, WallSlide, WallJump }
 var current_state: State = State.Idle
@@ -20,6 +21,7 @@ var current_state: State = State.Idle
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var wall_jump_lock_timer := 0.0
+var dash_horizontal_disable_timer := 0.0
 var dash_timer
 var last_on_ground_time := 0.0
 var last_on_wall_time := 0.0
@@ -27,9 +29,10 @@ var last_on_wall_right_time := 0.0
 var last_on_wall_left_time := 0.0
 
 var is_dashing := false
+var has_dashed_midair := false
 var dash_direction
 
-var isFacingRight := true
+var is_facing_right := true
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -60,15 +63,22 @@ func update_timers(delta: float) -> void:
 		jump_buffer_timer = jump_buffer_time
 	else:
 		jump_buffer_timer -= delta
+	
+	dash_horizontal_disable_timer -= delta
 
 
 func apply_gravity(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		has_dashed_midair = false
 
 
 func handle_horizontal() -> void:
 	if wall_jump_lock_timer > 0.0:
+		return
+		
+	if dash_horizontal_disable_timer > 0:
 		return
 		
 	var direction := Input.get_axis("move_left", "move_right")
@@ -76,6 +86,7 @@ func handle_horizontal() -> void:
 	if direction != 0:
 		velocity.x = direction * speed
 		sprite.flip_h = direction < 0
+		is_facing_right = true if direction > 0 else false
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, speed)
@@ -105,25 +116,41 @@ func handle_dash() -> void:
 	if is_dashing:
 		velocity.y = 0
 		dash_timer -= get_physics_process_delta_time()
-		velocity.x = dash_velocity * dash_direction
+		velocity.x = dash_velocity * (1.0 if is_facing_right else -1.0) 
 		if dash_timer <= 0.0:
+			is_dashing = false			
+			
+		if is_on_wall_only():
+			velocity.x = 0
 			is_dashing = false
+		 
+			
 		return
 		
 	if Input.is_action_just_pressed("dash"):
+		if has_dashed_midair:
+			return
 		velocity.y = 0
-		var direction = Input.get_axis("move_left", "move_right")
+		var direction = (1.0 if is_facing_right else -1.0)
 		velocity.x = dash_velocity * direction
 		is_dashing = true
 		dash_timer = dash_time
-		dash_direction = direction
+		
+		dash_horizontal_disable_timer = dash_horizontal_disable_time
+			
+		if not is_on_floor():
+			has_dashed_midair = true
+			
 		
 func handle_wall_slide(delta: float) -> void:
 	if !is_on_wall_only():
 		return
+	
+	has_dashed_midair = false
 
 	var wall_dir = get_wall_direction()
 	var input_dir = Input.get_axis("move_left", "move_right")
+	is_facing_right = false if wall_dir > 0 else true
 
 	sprite.flip_h = wall_dir > 0
 	if input_dir == wall_dir:
@@ -144,14 +171,14 @@ func update_state() -> void:
 func animate() -> void:
 	match current_state:
 		State.Idle:
-			sprite.play("idle")
+			sprite.play("idle_past")
 		State.Walk:
-			sprite.play("walk")
+			sprite.play("walk_past")
 		State.Jump:
-			sprite.play("jump")
+			sprite.play("jump_past")
 			sprite.frame = 3
 		State.WallSlide:
-			sprite.play("wall_slide")
+			sprite.play("wall_slide_past")
 
 func get_wall_direction() -> int:
 	var wall_normal = get_wall_normal()

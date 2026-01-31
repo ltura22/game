@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://dddjwee7elsr3"]
+[gd_scene load_steps=12 format=4 uid="uid://dddjwee7elsr3"]
 
-[ext_resource type="Script" uid="uid://qtt08yfou41a" path="res://level_01.gd" id="1_4my35"]
+[ext_resource type="Script" path="res://level_01.gd" id="1_4my35"]
 [ext_resource type="Texture2D" uid="uid://dbvj7y4mk7lh6" path="res://assets/blueheartblock.png" id="2_82i7p"]
 [ext_resource type="Texture2D" uid="uid://pbmubalqmyqd" path="res://assets/ladybugblock.png" id="2_dod8c"]
 [ext_resource type="Texture2D" uid="uid://dl5i7dhih1pyk" path="res://assets/purpleblock.png" id="2_dvyf1"]
@@ -39,24 +39,24 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e4o4c")
 
-[node name="Node2D" type="Node2D" unique_id=738105331]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_4my35")
 
-[node name="CharacterBody2D" parent="." unique_id=1282189231 instance=ExtResource("2_fjnrr")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fjnrr")]
 position = Vector2(345, -570)
 max_fall_velocity = 900
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=71340817]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(1.5, 1.5)
 
-[node name="RedTileMap" type="TileMapLayer" parent="." unique_id=1721721329]
+[node name="RedTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAD8/wIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_jauoq")
 
-[node name="BlueTileMap" type="TileMapLayer" parent="." unique_id=281594015]
+[node name="BlueTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD+/wIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_uifix")
 
-[node name="TileMap" type="TileMapLayer" parent="." unique_id=1507291509]
+[node name="TileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_agv0y")

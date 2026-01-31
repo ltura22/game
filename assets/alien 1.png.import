@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c48o0g7uq84on"
-path="res://.godot/imported/jump1 (4).png-58f3ac9371e3db4abd8d5b060f4df9bf.ctex"
+uid="uid://0a3iosq0xh65"
+path="res://.godot/imported/alien 1.png-43189563a7018845c1e5b63ee645bbc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/future/jump/jump1 (4).png"
-dest_files=["res://.godot/imported/jump1 (4).png-58f3ac9371e3db4abd8d5b060f4df9bf.ctex"]
+source_file="res://assets/alien 1.png"
+dest_files=["res://.godot/imported/alien 1.png-43189563a7018845c1e5b63ee645bbc4.ctex"]
 
 [params]
 
