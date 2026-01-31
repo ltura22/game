@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://yt8ckka00o8s" path="res://assets/character/past/slide/slide.png" id="12_ivps1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpu1v"]
-size = Vector2(40, 80)
+size = Vector2(64, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1kv8"]
 atlas = ExtResource("2_6g7jq")
@@ -79,7 +79,6 @@ animations = [{
 script = ExtResource("1_kdeu2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278201820]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_qpu1v")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1383260628]
@@ -87,4 +86,4 @@ shape = SubResource("RectangleShape2D_qpu1v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418731116]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_0f20r")
-animation = &"idle"
+animation = &"jump"

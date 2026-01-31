@@ -9,10 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://2it3rhor4tn" path="res://assets/character/past/walk/Frame 4.png" id="5_jn1na"]
 [ext_resource type="Texture2D" uid="uid://8f7nc4agnre1" path="res://assets/character/past/jump/jump (3).png" id="5_urp6f"]
 [ext_resource type="Texture2D" uid="uid://7rdlayosc0kw" path="res://assets/character/past/walk/Frame 3.png" id="6_2qvvt"]
+[ext_resource type="Texture2D" uid="uid://djdejwyl03d48" path="res://assets/character/past/jump/jump (4).png" id="6_bwjto"]
+[ext_resource type="Texture2D" uid="uid://chb550s03360g" path="res://assets/character/past/jump/jump (5).png" id="7_606se"]
 [ext_resource type="Texture2D" uid="uid://yt8ckka00o8s" path="res://assets/character/past/slide/slide.png" id="12_ivps1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpu1v"]
-size = Vector2(40, 80)
+size = Vector2(64, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1kv8"]
 atlas = ExtResource("2_6g7jq")
@@ -44,8 +46,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_urp6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_urp6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_606se")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
 "speed": 9.0
 }, {
@@ -77,9 +88,22 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=997736461]
 script = ExtResource("1_kdeu2")
+run_speed = null
+run_accel = null
+run_decel = null
+air_control = null
+gravity = null
+fall_gravity_mult = null
+jump_cut_gravity_mult = null
+fast_fall_gravity_mult = null
+jump_velocity = null
+wall_jump_force = null
+wall_slide_speed = null
+coyote_time = null
+jump_buffer_time = null
+wall_jump_lock_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278201820]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_qpu1v")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1383260628]
@@ -87,4 +111,4 @@ shape = SubResource("RectangleShape2D_qpu1v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418731116]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_0f20r")
-animation = &"idle"
+animation = &"jump"

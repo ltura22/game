@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("switch"):
 		isRedActive = not isRedActive
 		if isRedActive:
 			tilemap_red.visible = true

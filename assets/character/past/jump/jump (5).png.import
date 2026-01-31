@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pbmubalqmyqd"
-path="res://.godot/imported/ladybugblock.png-e233373d7fc81ec408778ebe9358c897.ctex"
+uid="uid://chb550s03360g"
+path="res://.godot/imported/jump (5).png-a2c6d7540f6f19e861bcb45259a47a1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ladybugblock.png"
-dest_files=["res://.godot/imported/ladybugblock.png-e233373d7fc81ec408778ebe9358c897.ctex"]
+source_file="res://assets/character/past/jump/jump (5).png"
+dest_files=["res://.godot/imported/jump (5).png-a2c6d7540f6f19e861bcb45259a47a1d.ctex"]
 
 [params]
 

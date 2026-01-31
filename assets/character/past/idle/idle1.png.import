@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pbmubalqmyqd"
-path="res://.godot/imported/ladybugblock.png-e233373d7fc81ec408778ebe9358c897.ctex"
+uid="uid://ngmqvdfwa8et"
+path="res://.godot/imported/idle1.png-dac0aacc076c4e76277c5c47ae596958.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ladybugblock.png"
-dest_files=["res://.godot/imported/ladybugblock.png-e233373d7fc81ec408778ebe9358c897.ctex"]
+source_file="res://assets/character/past/idle/idle1.png"
+dest_files=["res://.godot/imported/idle1.png-dac0aacc076c4e76277c5c47ae596958.ctex"]
 
 [params]
 
