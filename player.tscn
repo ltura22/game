@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c7bx77mkfcmen"]
+[gd_scene load_steps=35 format=3 uid="uid://c7bx77mkfcmen"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kdeu2"]
-[ext_resource type="Texture2D" uid="uid://bgauwpvao0f57" path="res://assets/tileset.png" id="2_6g7jq"]
 [ext_resource type="Texture2D" uid="uid://dvw1go4x0k52o" path="res://assets/character/future/dash/dash1 (1).png" id="2_dm406"]
 [ext_resource type="Texture2D" uid="uid://dsrtqsudedha" path="res://assets/character/future/idle/idle1.png" id="2_o415i"]
 [ext_resource type="Texture2D" uid="uid://ded83lwtqp4a7" path="res://assets/character/past/walk/Frame 1.png" id="3_k0mkb"]
@@ -31,17 +30,11 @@
 [ext_resource type="Texture2D" uid="uid://cfrgxhm7m55gn" path="res://assets/character/future/walk/walk (1).png" id="13_nxm0j"]
 [ext_resource type="Texture2D" uid="uid://dgwiiu3lq06u" path="res://assets/character/future/walk/walk (2).png" id="14_ys8db"]
 [ext_resource type="Texture2D" uid="uid://dpih1qg5ddds6" path="res://assets/character/future/walk/walk (3).png" id="15_1n005"]
+[ext_resource type="Texture2D" uid="uid://ngmqvdfwa8et" path="res://assets/character/past/idle/idle1.png" id="15_mi1vy"]
+[ext_resource type="Texture2D" uid="uid://ib3ki4teavs4" path="res://assets/character/past/idle/idle2.png" id="16_fbkmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpu1v"]
 size = Vector2(38, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1kv8"]
-atlas = ExtResource("2_6g7jq")
-region = Rect2(0, 0, 400, 500)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3sgt"]
-atlas = ExtResource("2_6g7jq")
-region = Rect2(400, 0, 400, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0f20r"]
 animations = [{
@@ -101,10 +94,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j1kv8")
+"texture": ExtResource("15_mi1vy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r3sgt")
+"texture": ExtResource("16_fbkmt")
 }],
 "loop": true,
 "name": &"idle_past",
@@ -199,8 +192,7 @@ shape = SubResource("RectangleShape2D_qpu1v")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_0f20r")
-animation = &"dash_future"
-frame = 2
-frame_progress = 0.540484
+animation = &"idle_past"

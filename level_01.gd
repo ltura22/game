@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var tilemap_blue := $BlueTileMap
 @onready var tilemap_red := $RedTileMap
+@onready var player := $CharacterBody2D
+
 
 var isRedActive := false
 
@@ -18,6 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch"):
 		isRedActive = not isRedActive
+		player.change_time(isRedActive)
 		if isRedActive:
 			tilemap_red.visible = true
 			tilemap_red.collision_enabled = true

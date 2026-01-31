@@ -15,9 +15,10 @@ extends CharacterBody2D
 @export var jump_cut_multiplier := 0.4
 @export var dash_horizontal_disable_time = 0.15
 
-enum State { Idle, Walk, Jump, WallSlide, WallJump }
+enum State { Idle, Walk, Jump, WallSlide, Dash }
 var current_state: State = State.Idle
 
+var is_past := false
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var wall_jump_lock_timer := 0.0
@@ -160,6 +161,8 @@ func handle_wall_slide(delta: float) -> void:
 func update_state() -> void:
 	if is_on_wall_only() and abs(velocity.y) > 0:
 		current_state = State.WallSlide
+	elif is_dashing:
+		current_state = State.Dash
 	elif !is_on_floor():
 		current_state = State.Jump
 	elif abs(velocity.x) > 1.0:
@@ -169,16 +172,37 @@ func update_state() -> void:
 
 
 func animate() -> void:
-	match current_state:
-		State.Idle:
-			sprite.play("idle_past")
-		State.Walk:
-			sprite.play("walk_past")
-		State.Jump:
-			sprite.play("jump_past")
-			sprite.frame = 3
-		State.WallSlide:
-			sprite.play("wall_slide_past")
+	if is_past:
+		match current_state:
+			State.Idle:
+				sprite.play("idle_past")
+			State.Walk:
+				sprite.play("walk_past")
+			State.Jump:
+				sprite.play("jump_past")
+				sprite.frame = 3
+			State.WallSlide:
+				sprite.play("wall_slide_past")
+			State.Dash:
+				sprite.play("dash_past")
+	else:
+		match current_state:
+			State.Idle:
+				sprite.play("idle_future")
+			State.Walk:
+				sprite.play("walk_future")
+			State.Jump:
+				sprite.play("jump_future")
+			State.WallSlide:
+				sprite.play("wall_slide_future")
+			State.Dash:
+				sprite.play("dash_future")
+			
+
+func change_time(is_red_active):
+	is_past = is_red_active
+	
+
 
 func get_wall_direction() -> int:
 	var wall_normal = get_wall_normal()
