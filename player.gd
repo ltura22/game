@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed := 300.0
-@export var jump_velocity := -600.0
+@export var speed := 800.0
+@export var jump_velocity := -1500.0
 @export var gravity := 1200.0
 @export var wall_slide_speed := 80.0
 @export var wall_jump_force := Vector2(-300, -800)
