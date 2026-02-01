@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c7bx77mkfcmen"]
+[gd_scene load_steps=37 format=3 uid="uid://c7bx77mkfcmen"]
 
-[ext_resource type="Script" uid="uid://cmb2cm8cojuxd" path="res://player.gd" id="1_kdeu2"]
+[ext_resource type="Script" path="res://player.gd" id="1_kdeu2"]
 [ext_resource type="Texture2D" uid="uid://dvw1go4x0k52o" path="res://assets/character/future/dash/dash1 (1).png" id="2_dm406"]
 [ext_resource type="Texture2D" uid="uid://dsrtqsudedha" path="res://assets/character/future/idle/idle1.png" id="2_o415i"]
 [ext_resource type="Texture2D" uid="uid://bjkdt106vs2l5" path="res://assets/character/past/jump/jump (1).png" id="3_nvl01"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://v16n330y1b0k" path="res://assets/character/past/walk/walk1 (2).png" id="29_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://cqwt1gwh5awn8" path="res://assets/character/past/walk/walk1 (3).png" id="30_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://c0qpl7fhbby7l" path="res://assets/character/past/walk/walk1 (4).png" id="31_hl5qd"]
+[ext_resource type="AudioStream" uid="uid://cr04mw0uqnvay" path="res://assets/SFX/Movement/Past/Jump1.wav" id="33_k2e6u"]
+[ext_resource type="AudioStream" uid="uid://cakw3v84ao3wm" path="res://assets/SFX/Movement/Past/Walk_Past (1).wav" id="33_qvlfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpu1v"]
 size = Vector2(223, 562)
@@ -182,18 +184,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1410157189]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_kdeu2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1783787175]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(76.5, -115)
 shape = SubResource("RectangleShape2D_qpu1v")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1976105374]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1923112508]
-position = Vector2(83.00001, -290.00003)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(83, -290)
 scale = Vector2(1.4175, 1.4175)
 sprite_frames = SubResource("SpriteFrames_0f20r")
 animation = &"walk_past"
-frame_progress = 0.44858298
+frame_progress = 0.448583
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_k2e6u")
+volume_db = 24.0
+
+[node name="walkPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_qvlfi")
+volume_db = 24.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7wntrahjvp66"]
+
+[ext_resource type="Script" path="res://mainscene.gd" id="1_10elu"]
+[ext_resource type="PackedScene" uid="uid://dyt7ljrkyo6k6" path="res://mainmenu.tscn" id="1_wp35v"]
+[ext_resource type="PackedScene" uid="uid://dddjwee7elsr3" path="res://level01.tscn" id="2_t1gfx"]
+[ext_resource type="PackedScene" uid="uid://clprp8658p3qc" path="res://pausemenu.tscn" id="4_suujf"]
+
+[node name="mainscene" type="Node"]
+script = ExtResource("1_10elu")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_wp35v")]
+offset_left = -209.0
+offset_top = -904.0
+offset_right = -209.0
+offset_bottom = -904.0
+
+[node name="Level01" parent="." instance=ExtResource("2_t1gfx")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_suujf")]
+offset_left = -59.0
+offset_top = -850.0
+offset_right = -279.0
+offset_bottom = -985.0

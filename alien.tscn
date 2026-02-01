@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://0j4t3vl0uumq"]
+
+[ext_resource type="Script" path="res://alien.gd" id="1_h8uqr"]
+[ext_resource type="Texture2D" uid="uid://cdvcycwu55ay0" path="res://assets/alien1-1.png" id="1_npxei"]
+[ext_resource type="Texture2D" uid="uid://d1hv1gpo7u7jq" path="res://assets/alien1-2.png" id="2_auhp4"]
+[ext_resource type="Texture2D" uid="uid://bosr5yw1xnlgv" path="res://assets/alien4 (4).png" id="3_ugdjd"]
+[ext_resource type="Texture2D" uid="uid://dnw5gnh8oj6rb" path="res://assets/alien1.png" id="4_frcdo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1q6ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_npxei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_auhp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ugdjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_frcdo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa5ut"]
+size = Vector2(273, 618)
+
+[node name="Alien" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_h8uqr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1q6ba")
+frame_progress = 0.351555
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-28.5, -7)
+shape = SubResource("RectangleShape2D_pa5ut")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1pkx8ghrd6au"
+path="res://.godot/imported/Walk_Future (4).wav-4ae9c14fd7961e2b7ea135e58a746a5c.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Movement/Future/Walk_Future (4).wav"
+dest_files=["res://.godot/imported/Walk_Future (4).wav-4ae9c14fd7961e2b7ea135e58a746a5c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

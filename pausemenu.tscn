@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://clprp8658p3qc"]
+
+[ext_resource type="Script" path="res://pausemenu.gd" id="1_r5gin"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5gin")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 342.0
+offset_top = 95.0
+offset_right = -436.0
+offset_bottom = -385.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "resume"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 407.0
+offset_top = 335.0
+offset_right = 652.0
+offset_bottom = 351.0
+min_value = -30.0
+max_value = 0.0
+
+[connection signal="pressed" from="CanvasLayer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="." method="_on_h_slider_value_changed"]

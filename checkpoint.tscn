@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr1hrfk28j2jk"]
+
+[ext_resource type="Script" path="res://checkpoint.gd" id="1_la3ta"]
+[ext_resource type="Texture2D" uid="uid://pbmubalqmyqd" path="res://assets/ladybugblock.png" id="2_4bg7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqqjw"]
+size = Vector2(128, 128)
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_la3ta")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4bg7h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_wqqjw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
